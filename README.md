@@ -1,6 +1,11 @@
 TestCase for registration, login and search functionality. Allure generated test case result and screenshot for failed result captured.
 
 
+1. Create ---> Run python3 -m venv <name_of_virtualenv>
+2. <name_of_virtualenv>/bin/activate
+3. Install requirements module in requirment.txt -------> Run python3 install -r requirements.txt
+4. Run all scenario without allure ---> behave features
+5. Run  scenario with  --->  allure server Report
 
 
 
