@@ -1,0 +1,72 @@
+first intiail all field
+ context.reg_personal_detail=Element(context.driver)
+ context.adress_detail=Element(context.driver)
+ context.login_detail=Element(context.driver)
+ context.reg_personal_detail_val=[fake.first_name(),fake.last_name(),fake.email(),'07304958432','00000000001']
+ context.reg_address_val=[fake.company(),"40 apple lane","oak wood","London","3554","SEQ 13Q","223"]
+ context.reg_login_detail_val=[fake.user_name(),"bbbbbb","bbbbbb"]
+ click_reg_icon=context.driver.wait.until(EC.visibility_of_element_located((By.LINK_TEXT,'Login or register')))
+click_reg_icon.click()
+click_reg_continue=context.driver.wait.until(EC.visibility_of_element_located((By.XPATH,'//div[@class="col-sm-6 newcustomer"]/div/form/fieldset/button')))
+click_reg_continue.click()
+
+context.reg_personal_detail.input_elm("return document.getElementsByClassName('registerbox form-horizontal')[0].childNodes[1].","getElementsByClassName('form-group')",".children[1].",context.reg_personal_detail_val)
+context.adress_detail.input_select_elm("return document.getElementsByClassName('registerbox form-horizontal')[1].childNodes[1].","getElementsByClassName('form-group')",".children[1].", context.reg_address_val)
+context.login_detail.input_elm("return document.getElementsByClassName('registerbox form-horizontal')[2].childNodes[1].","getElementsByClassName('form-group')",".children[1].",context.reg_login_detail_val)
+ 
+
+
+///////EXTRAS
+
+ all_warming={"expected_first_name_warming":"First Name must be between 1 and 32 characters!",
+ "expected_last_name_warming":"Last Name must be between 1 and 32 characters!",
+ "expected_email_warming":"Email Address does not appear to be valid!",
+ "expected_login_warming":"Login name must be alphanumeric only and between 5 and 64 characters!",
+ "expected_password_warming":"Password must be between 4 and 20 characters!"
+}
+ for warming in context.driver.wait.until(EC.presence_of_all_elements_located((By.XPATH,"//form[@id='AccountFrm']/div[@class='registerbox form-horizontal ']/fieldset/div[@class='form-group has-error']/span[@class='help-block']"))):
+    all_warming["expected_address_warming"]="Address 1 must be between 3 and 128 characters!"
+    all_warming["expected_city_warming"]="City must be between 3 and 128 characters!"
+    all_warming["expected_region_warming"]="Please select a region / state!"
+    all_warming["expected_zip/postalcode_warming"]="Please select a region / state!"
+    for key,vaule in all_warming.items():
+        if warming.text.__eq__(vaule):
+         assert warming.text.__eq__(vaule)
+
+
+ for warming_double in context.driver.wait.until(EC.presence_of_all_elements_located((By.XPATH,"//form[@id='AccountFrm']/div[@class='registerbox form-horizontal']/fieldset/div[@class='form-group has-error']/span[@class='help-block']"))):
+    for key,vaule in all_warming.items():
+        if warming_double.text.__eq__(vaule):
+         assert warming_double.text.__eq__(vaule)
+
+
+
+ all_warming={"expected_first_name_warming":"First Name must be between 1 and 32 characters!",
+ "expected_last_name_warming":"Last Name must be between 1 and 32 characters!",
+ "expected_email_warming":"Email Address does not appear to be valid!",
+ "expected_login_warming":"Login name must be alphanumeric only and between 5 and 64 characters!",
+ "expected_password_warming":"Password must be between 4 and 20 characters!"
+}
+ for warming in context.driver.wait.until(EC.presence_of_all_elements_located((By.XPATH,"//form[@id='AccountFrm']/div[@class='registerbox form-horizontal ']/fieldset/div[@class='form-group has-error']/span[@class='help-block']"))):
+    all_warming["expected_address_warming"]="Address 1 must be between 3 and 128 characters!"
+    all_warming["expected_city_warming"]="City must be between 3 and 128 characters!"
+    all_warming["expected_region_warming"]="Please select a region / state!"
+    all_warming["expected_zip/postalcode_warming"]="Please select a region / state!"
+    for key,vaule in all_warming.items():
+        if warming.text.__eq__(vaule):
+         assert warming.text.__eq__(vaule)
+
+
+
+
+
+
+    # first_name_err_elm=self.driver.wait.until(EC.visibility_of_element_located((By.XPATH,self.__first_name_error_xpath)))
+    # last_name_err_elm=self.driver.wait.until(EC.visibility_of_element_located((By.XPATH,self.__last_name_error_xpath)))
+    # email_err_elm=self.driver.wait.until(EC.visibility_of_element_located((By.XPATH,self.set_email_error_xpath_options(email_err_msg))))
+    # address_one_err_elm=self.driver.wait.until(EC.visibility_of_element_located((By.XPATH,self.__address_one_error_xpath)))
+    # address_two_err_elm=self.driver.wait.until(EC.visibility_of_element_located((By.XPATH,self.__address_two_error_xpath)))
+    # region_or_state_err_elm=self.driver.wait.until(EC.visibility_of_element_located((By.XPATH,self.__region_or_state_error_xpath)))
+    # zip_code_or_postal_code_err_elm=self.driver.wait.until(EC.visibility_of_element_located((By.XPATH,self.__zip_code_or_postal_code_error_xpath)))
+    # login_name_err_elm=self.driver.wait.until(EC.visibility_of_element_located((By.XPATH,self.__login_name_error_xpath)))
+    # password_err_elm=self.driver.wait.until(EC.visibility_of_element_located((By.XPATH,self.__password_error_xpath)))
